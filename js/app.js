@@ -16,9 +16,24 @@ form.addEventListener('submit', e => {
         }
     });
 
+    let index = 0;
     //show result
-    scrollTo(0,0)
-    studentScore.innerHTML = `${score}%`;
-    scoreboard.classList.add('done')
+    scrollTo(0,0);
+    scoreboard.classList.add('done');
+    if(score === 0){
+        studentScore.innerHTML = `${index}%`;
+    } else{
+        timer = setInterval(() => {
+            index++;
+            studentScore.innerHTML = `${index}%`;
+            if(index === score){
+                clearInterval(timer);
+            }
+            
+        }, 40)
+    }
 });
 
+setTimeout(() => {
+ //do something
+}, 2000);
